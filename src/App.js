@@ -204,9 +204,9 @@ export default function SolarStoreHebrew() {
         <div className="mx-auto flex max-w-7xl flex-col gap-3 px-6 py-8 text-sm text-slate-500 md:flex-row md:items-center md:justify-between">
           <div>© 2026 SolarPro. כל הזכויות שמורות.</div>
           <div className="flex gap-4">
-            <a href="#">מדיניות פרטיות</a>
-            <a href="#">תקנון</a>
-            <a href="#">משלוחים והחזרות</a>
+            <a href="/privacy">מדיניות פרטיות</a>
+            <a href="/terms">תקנון</a>
+            <a href="/shipping">משלוחים והחזרות</a>
           </div>
         </div>
       </footer>
