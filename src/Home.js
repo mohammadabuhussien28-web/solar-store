@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import logo from './assets/logo.jpg';
+import homeImage from './assets/home.jpg';
 import { Link } from 'react-router-dom';
 export default function Home() {
       const products = [
@@ -33,6 +36,15 @@ export default function Home() {
 
   const categories = ['תאורה סולארית', 'לגינה', 'לדים', 'מבצעים'];
   const benefits = ['משלוח מהיר לכל הארץ', 'מוצרים חסכוניים ללא חשמל', 'שירות אישי בוואטסאפ', 'פתרונות לגינה ולחצר'];
+  const [cart, setCart] = useState([]);
+
+const addToCart = (product) => {
+  setCart((prev) => [...prev, product]);
+};
+
+const totalPrice = cart.reduce((sum, item) => {
+  return sum + Number(item.price.replace('₪', ''));
+}, 0);
 
   return (
     <div dir="rtl" style={{ fontFamily: 'Arial, sans-serif', background: '#f5f7f6', color: '#1f2937', minHeight: '100vh' }}>
@@ -131,7 +143,7 @@ export default function Home() {
       <header className="header">
         <div className="container header-inner">
           <div>
-            <h1 className="brand">AD Solar</h1>
+            <img src={logo} alt="AD Solar" style={{ height: '50px' }} />
             <p className="brand-sub">פתרונות תאורה סולארית לגינה, לבית ולחצר</p>
           </div>
 
@@ -139,7 +151,21 @@ export default function Home() {
             <input placeholder="חפש מוצר..." />
           </div>
 
-          <a className="phone" href="tel:0525511545">052-5511545</a>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+  <a href="tel:0525511545">052-5511545</a>
+
+  <div
+    style={{
+      background: '#dcfce7',
+      color: '#166534',
+      padding: '8px 12px',
+      borderRadius: '12px',
+      fontWeight: 'bold'
+    }}
+  >
+    עגלה: {cart.length}
+  </div>
+</div>
         </div>
       </header>
 
@@ -151,7 +177,11 @@ export default function Home() {
         </div>
       </nav>
 
-      <section className="hero">
+      <section className="hero" style={{
+        backgroundImage: `url(${homeImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}>
         <div className="container hero-content">
           <div className="hero-badge">תאורה חכמה ללא חיבור לחשמל</div>
           <h1>תאורה סולארית שמכניסה סטייל ואור לכל גינה</h1>
@@ -227,13 +257,22 @@ export default function Home() {
                   <div className="product-desc">{product.desc}</div>
                   <div className="product-footer">
                     <span className="price">{product.price}</span>
-                    <Link
-  to={`/product/${product.id}`}
-  className="product-btn"
-  style={{ textDecoration: 'none', display: 'inline-block', textAlign: 'center' }}
->
-  לפרטי המוצר
-</Link>
+                    <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+                      <Link
+                        to={`/product/${product.id}`}
+                        className="product-btn"
+                        style={{ textDecoration: 'none', display: 'inline-block' }}
+                      >
+                        לפרטי המוצר
+                      </Link>
+
+                      <button
+                        className="product-btn"
+                        onClick={() => addToCart(product)}
+                      >
+                        הוסף לעגלה
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
