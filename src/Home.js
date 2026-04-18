@@ -157,7 +157,7 @@ const totalPrice = cart.reduce((sum, item) => {
       fontWeight: 'bold'
     }}
   >
-    עגלה: {cart.length}
+    עגלה: {cart.length} | סה״כ: ₪{totalPrice}
   </div>
 </div>
         </div>
