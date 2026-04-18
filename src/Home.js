@@ -65,12 +65,6 @@ const totalPrice = cart.reduce((sum, item) => {
         .nav-inner { display: flex; gap: 28px; padding: 14px 0; overflow-x: auto; white-space: nowrap; }
         .nav-inner span { font-weight: 700; font-size: 14px; opacity: 0.98; }
         .hero { position: relative; min-height: 520px; display: flex; align-items: center; }
-        .hero::before {
-          content: '';
-          position: absolute; inset: 0;
-          background-image: linear-gradient(rgba(15,23,42,0.42), rgba(15,23,42,0.38)), url('/string-lights.jpg');
-          background-size: cover; background-position: center;
-        }
         .hero-content { position: relative; z-index: 1; color: white; max-width: 640px; padding: 80px 0; }
         .hero-badge { display: inline-block; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.24); padding: 8px 14px; border-radius: 999px; font-weight: 700; margin-bottom: 16px; }
         .hero h1 { margin: 0 0 14px; font-size: 56px; line-height: 1.1; }
